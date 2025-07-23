@@ -342,7 +342,7 @@ dependencies = [
 
 [[package]]
 name = "image-max-polling"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "image",

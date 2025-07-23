@@ -22,7 +22,7 @@ pub fn supports_avx2() -> bool {
 }
 
 /// SIMD 加速的最大值池化
-pub fn max_pooling_simd(input: &[u8], width: usize, factor: usize) -> Vec<u8> {
+pub fn max_pooling_simd(input: &[u8], width: usize, factor: usize) -> (usize, usize, Vec<u8>) {
     let output_width = width / factor;
     let output_height = input.len() / (width * factor);
     let mut output = vec![0; output_width * output_height];
@@ -73,5 +73,5 @@ pub fn max_pooling_simd(input: &[u8], width: usize, factor: usize) -> Vec<u8> {
                 row[ox] = max_val;
             });
         });
-    output
+    (output_width, output_height, output)
 }
