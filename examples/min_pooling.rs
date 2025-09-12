@@ -2,7 +2,7 @@ use std::time::Instant;
 
 use anyhow::Result;
 use image::{EncodableLayout, GrayImage, ImageReader};
-use image_max_polling::{max_pooling_simd, supports_avx2};
+use image_max_polling::{min_pooling_simd, supports_avx2};
 
 fn main() -> Result<()> {
     let support_avx2 = supports_avx2();
@@ -20,7 +20,7 @@ fn main() -> Result<()> {
 
     let start = Instant::now();
     let (new_width, new_height, output) =
-        max_pooling_simd(image_data, image_width as usize, factor);
+        min_pooling_simd(image_data, image_width as usize, factor);
 
     let elapse = start.elapsed();
 
@@ -28,7 +28,7 @@ fn main() -> Result<()> {
 
     let result_image = GrayImage::from_vec(new_width as u32, new_height as u32, output).unwrap();
 
-    result_image.save("test_image/max-result.png")?;
+    result_image.save("test_image/min_result.png")?;
 
     Ok(())
 }
