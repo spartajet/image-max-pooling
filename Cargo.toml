@@ -1,11 +1,11 @@
 [package]
 name = "image-max-polling"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2024"
 authors = ["Dr.Guo"]
 license = "MIT"
 repository = "https://github.com/spartajet/image-max-pooling"
-description = "A high-performance Rust library for maximum pooling operations on images, leveraging SIMD instructions (AVX2/NEON) and parallel processing for accelerated performance."
+description = "A high-performance Rust library for maximum and minimum pooling operations on images, leveraging SIMD instructions (AVX2/NEON) and parallel processing for accelerated performance."
 
 [dependencies]
 rayon = "1"
